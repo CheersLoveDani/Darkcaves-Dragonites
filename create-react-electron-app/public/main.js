@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 
 function createWindow() {
   // Create the browser window.
@@ -43,3 +43,44 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+const template = [
+  {
+    label: 'Darkcaves & Dragonites',
+    submenu: [
+      { label: 'New Campaign' },
+      { label: 'New Trainer' },
+      { label: 'New Pokemon' },
+    ]
+  },
+  {
+    label: 'File',
+    submenu: [
+      { label: 'Save' },
+      { label: 'Load' },
+      {
+        label: 'Google',
+        click: () => {
+          let win = new BrowserWindow({ width: 600, height: 800 })
+          win.loadURL('https://www.google.com')
+        }
+      },
+      // creates a divider between two options
+      { type: 'separator' },
+      { role: 'copy' },
+      { role: 'paste' },
+    ]
+  },
+  {
+    label: 'Edit',
+    submenu: [
+      { role: 'selectall' },
+      { role: 'reload' }
+    ]
+  },
+  {
+    label: 'View',
+  },
+]
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
