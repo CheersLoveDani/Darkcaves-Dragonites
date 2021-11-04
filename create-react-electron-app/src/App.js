@@ -31,17 +31,13 @@ const Pokedex = () => {
 const App = (props) => {
   return (
     <MemoryRouter>
-      <div className="App">
-        <div className="menu">
-        </div>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/one" component={Stand} />
-          <Route exact path="/two" component={Sit} />
-          <Route exact path='/pokedex' component={Pokedex} />
-        </Switch>
-      </div>
+      <Nav />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/one" component={Stand} />
+        <Route exact path="/two" component={Sit} />
+        <Route exact path='/pokedex' component={Pokedex} />
+      </Switch>
     </MemoryRouter>
   );
 }

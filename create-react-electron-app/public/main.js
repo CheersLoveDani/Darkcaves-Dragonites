@@ -1,8 +1,10 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 
+let mainWindow
+
 function createWindow() {
   // Create the browser window.
-  const win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -12,10 +14,10 @@ function createWindow() {
   })
 
   //load the index.html from a url
-  win.loadURL('http://localhost:3000');
+  mainWindow.loadURL('http://localhost:3000');
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
@@ -51,7 +53,7 @@ const template = [
       {
         label: 'Pokedex',
         click: () => {
-          ipcMain.send('pokedex-route')
+          mainWindow.webContents.send('pokedex-route')
         }
       },
       { label: 'Trainer' },
@@ -63,15 +65,23 @@ const template = [
   {
     label: 'File',
     submenu: [
-      { label: 'Save' },
-      { label: 'Load' },
+      // This opens the Dev Tools for the program
       {
-        label: 'Google',
+        label: 'Dev Tools',
         click: () => {
-          let win = new BrowserWindow({ width: 600, height: 800 })
-          win.loadURL('https://www.google.com')
+          mainWindow.webContents.openDevTools()
         }
       },
+      { label: 'Save' },
+      { label: 'Load' },
+      // {
+      //   label: 'Google',
+      //   click: () => {
+      //     let win = new BrowserWindow({ width: 600, height: 800 })
+      //     win.loadURL('https://www.google.com')
+      //   }
+      // },
+
       // creates a divider between two options
       { type: 'separator' },
       { role: 'copy' },
