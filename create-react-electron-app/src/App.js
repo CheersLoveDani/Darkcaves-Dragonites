@@ -1,7 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
-import { HashRouter, Link, Route, Switch, useHistory } from "react-router-dom";
-import { Button, ButtonGroup } from '@chakra-ui/button';
+import './App.css'
+import { MemoryRouter, Link, Route, Switch } from 'react-router-dom'
+import Nav from './Components/Nav'
 
 const Stand = () => {
 
@@ -23,34 +22,29 @@ const Home = () => {
   )
 }
 
-const App = (props) => {
-  let history = useHistory()
+const Pokedex = () => {
   return (
-    <HashRouter>
+    <h1>Pokedex</h1>
+  )
+}
+
+const App = (props) => {
+  return (
+    <MemoryRouter>
       <div className="App">
         <div className="menu">
-          <ButtonGroup isAttached>
-            <Button>
-              <h2>Home</h2>
-            </Button>
-            <Button>
-              <Link to="/one"><h2>Stand</h2></Link>
-            </Button>
-            <Button>
-              <Link to="/two"><h2>Sit</h2></Link>
-            </Button>
-          </ButtonGroup>
-
         </div>
+        <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/one" component={Stand} />
           <Route exact path="/two" component={Sit} />
+          <Route exact path='/pokedex' component={Pokedex} />
         </Switch>
       </div>
-    </HashRouter>
+    </MemoryRouter>
   );
 }
 
 
-export default App;
+export default App

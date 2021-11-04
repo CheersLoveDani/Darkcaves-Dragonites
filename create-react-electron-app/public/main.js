@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 
 function createWindow() {
   // Create the browser window.
@@ -46,11 +46,18 @@ app.on('activate', () => {
 
 const template = [
   {
-    label: 'Darkcaves & Dragonites',
+    label: 'Menu',
     submenu: [
-      { label: 'New Campaign' },
-      { label: 'New Trainer' },
-      { label: 'New Pokemon' },
+      {
+        label: 'Pokedex',
+        click: () => {
+          ipcMain.send('pokedex-route')
+        }
+      },
+      { label: 'Trainer' },
+      { label: 'Pokemon' },
+      { label: 'Bag' },
+      { label: 'PC' },
     ]
   },
   {
