@@ -1,11 +1,13 @@
 import { Button } from "@chakra-ui/button"
 import { Box, Center, Flex, Heading, Text } from "@chakra-ui/layout"
+import { Image } from "@chakra-ui/react"
 import { useState } from "react"
 import { getPokemonByName } from "../../lib/PokeAPI"
 
 function Pokedex() {
-  const [pokemon, setPokemon] = useState('empty')
+  const [pokemon, setPokemon] = useState(null)
 
+  console.log('Pokemon state is: ', pokemon)
   return (
     <Box>
       <Center>
@@ -13,18 +15,19 @@ function Pokedex() {
           <Heading>Pokedex</Heading>
           <Button
             variant='ghost'
-            onClick={() => {
-              setPokemon(getPokemonByName('squirtle'))
-              console.log(pokemon)
+            onClick={async () => {
+              setPokemon(await getPokemonByName('squirtle'))
+
             }}
           >
             Get Squirtle
           </Button>
-          <Text>{ pokemon }</Text>
+          <Text align='center' >{pokemon ? pokemon.species.name : ''}</Text>
+          <Image src={pokemon ? pokemon.sprites.front_default : ''} />
         </Flex>
       </Center>
     </Box>
-    
+
   )
 }
 
