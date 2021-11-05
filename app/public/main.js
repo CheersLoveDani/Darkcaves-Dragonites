@@ -1,12 +1,12 @@
-const { app, BrowserWindow, Menu, ipcMain } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 
 let mainWindow
 
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1600,
+    height: 1000,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,

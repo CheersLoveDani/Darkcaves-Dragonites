@@ -1,8 +1,6 @@
 
 import {
   IconButton,
-  ButtonGroup,
-  Button,
   MenuButton,
   MenuItem,
   MenuList,
@@ -12,10 +10,6 @@ import {
 
 import {
   HamburgerIcon,
-  AddIcon,
-  ExternalLinkIcon,
-  RepeatIcon,
-  EditIcon,
 } from '@chakra-ui/icons'
 
 import { useHistory } from 'react-router-dom'
@@ -32,7 +26,10 @@ function Nav() {
           variant=""
         />
 
-        <MenuList bg='yellow.300'>
+        <MenuList
+          bg='yellow.300'
+          mt={-3}
+        >
           <MenuItem
             onClick={() => {
               history.push('/')
@@ -49,28 +46,28 @@ function Nav() {
           </MenuItem>
           <MenuItem
             onClick={() => {
-
+              history.push('/trainer')
             }}
           >
             Trainer
           </MenuItem>
           <MenuItem
             onClick={() => {
-
+              history.push('/pokemon')
             }}
           >
             Pokemon
           </MenuItem>
           <MenuItem
             onClick={() => {
-
+              history.push('/bag')
             }}
           >
             Bag
           </MenuItem>
           <MenuItem
             onClick={() => {
-
+              history.push('/pc')
             }}
           >
             PC
