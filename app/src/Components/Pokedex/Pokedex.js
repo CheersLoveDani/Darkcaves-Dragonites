@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/button'
 import { Box, Center, Flex, Heading } from '@chakra-ui/layout'
 import { useState } from 'react'
 import { getPokemonsList } from '../../lib/PokeAPI'
-import { setPokedexStore, getPokedexStore } from '../../lib/Storage'
+import { pingPong } from '../../lib/Storage'
 
 function Pokedex() {
   const [pokemon, setPokemon] = useState(null)
@@ -21,7 +21,7 @@ function Pokedex() {
               <Button
                 variant='ghost'
                 onClick={async () => {
-                  setPokemon(setPokedexStore( await getPokemonsList()))
+                  pingPong()
                 }}
               >
                 Fetch and Save pokedex

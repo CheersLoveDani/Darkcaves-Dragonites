@@ -1,19 +1,12 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron')
-const Store = require('electron-store')
+const { path } = require('path')
 
 let mainWindow
 
-// Electron-Store Listener
-let store = new Store();
-
 ipcMain.on('asynchronous-message', (event, arg) => {
-  console.log('heyyyy', arg); // prints "heyyyy ping"
-
-//Save them to the store
-  store.set('test', arg);
-
-  console.log('store', store.get('test'));
-});
+  console.log('ping: ', arg) // prints "ping"
+  event.reply('asynchronous-reply', 'pong')
+})
 
 
 function createWindow() {
@@ -22,8 +15,10 @@ function createWindow() {
     width: 1600,
     height: 1000,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
       enableRemoteModule: true,
+      contextIsolation: false,
+      preload: __dirname + '/preload.js',
     }
   })
 

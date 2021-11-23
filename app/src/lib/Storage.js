@@ -1,18 +1,11 @@
-const storage = require('electron-storage')
 
-export function setPokedexStore(data) {
-  if (data != null) {
-    // ipcRenderer.send('asynchronous-message', JSON.stringify(data));
-    return(data)
-  }
-  else {
-    console.warn('No Data Passed to pokedex')
-  }
+console.log('storage: ', window.electron.ipcRenderer)
+
+export function pingPong() {
+  window.electron.ipcRenderer.send('asynchronous-message', 'ping')
 }
 
-// export function getPokedexStore() {
-//   if (store.get('pokedex')) {
-//     return store.get('pokedex')
-//   }
-  
-// }
+
+window.electron.ipcRenderer.on('asynchronous-reply', (event, arg) => {
+  console.log('pong? ', arg) // prints "pong"
+})
