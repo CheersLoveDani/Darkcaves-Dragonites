@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/button"
 import { Box, Center, Flex, Heading, Text } from "@chakra-ui/layout"
 import { Image } from "@chakra-ui/react"
 import { useState } from "react"
-import { getPokemonByName } from "../../lib/PokeAPI"
+import { getPokemonByName, getPokemonsList } from "../../lib/PokeAPI"
 
 function Pokedex() {
   const [pokemon, setPokemon] = useState(null)
@@ -12,18 +12,34 @@ function Pokedex() {
     <Box>
       <Center>
         <Flex flexDirection='column'>
-          <Heading>Pokedex</Heading>
-          <Button
-            variant='ghost'
-            onClick={async () => {
-              setPokemon(await getPokemonByName('squirtle'))
+          <Center>
+            <Heading>Pokedex</Heading>
+          </Center>
 
-            }}
-          >
-            Get Squirtle
-          </Button>
-          <Text align='center' >{pokemon ? pokemon.species.name : ''}</Text>
-          <Image src={pokemon ? pokemon.sprites.front_default : ''} />
+          <Flex flexDirection='row'>
+            <Box flex={1}>
+              <Button
+                variant='ghost'
+                onClick={async () => {
+                  console.log(await getPokemonsList())
+
+                }}
+              >
+                Get Squirtle
+              </Button>
+            </Box>
+            <Box flex={1}>
+              <Button
+                variant='ghost'
+                onClick={async () => {
+                  console.log(await getPokemonsList())
+
+                }}
+              >
+                Get Squirtle
+              </Button>
+            </Box>
+          </Flex>
         </Flex>
       </Center>
     </Box>
