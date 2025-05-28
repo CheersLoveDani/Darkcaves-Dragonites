@@ -1,3 +1,6 @@
+// Import types we need to reference
+import type { Pokemon, BaseStats } from "./pokemon";
+
 // API response types
 export interface PokeApiResponse<T> {
   count: number;
@@ -118,6 +121,38 @@ export interface ImportResult {
   success: boolean;
   message: string;
   data?: ExportData;
+}
+
+// User/Trainer types
+export interface Trainer {
+  id: string;
+  name: string;
+  level: number;
+  experience: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface UserPokemon {
+  id: string;
+  pokemonId: number;
+  nickname?: string;
+  level: number;
+  experience: number;
+  nature?: string;
+  capturedAt: string;
+  customStats?: Partial<BaseStats>;
+}
+
+export interface ConversionSettings {
+  useCustomFormulas: boolean;
+  levelScaling: boolean;
+  includeHiddenAbilities: boolean;
+  preferredStatSystem: "standard" | "point-buy" | "custom";
+  customStatRanges?: {
+    min: number;
+    max: number;
+  };
 }
 
 // Re-export types from other modules

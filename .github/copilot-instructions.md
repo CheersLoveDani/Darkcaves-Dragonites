@@ -28,6 +28,15 @@
   - `[ ]` means the task is not started
 - When completing a phase or major milestone, update the README to reflect current status and next steps.
 
+## Version Management
+
+- Update the package.json version number when completing significant milestones or phases:
+  - Patch version (0.1.0 → 0.1.1) for bug fixes and small improvements
+  - Minor version (0.1.0 → 0.2.0) for new features and completed phases
+  - Major version (0.1.0 → 1.0.0) for breaking changes or major releases
+- When the VersionDisplay component is implemented, ensure it shows the current version from package.json
+- Update both package.json and any on-screen version displays simultaneously to keep them in sync
+
 ## Communication
 
 - If the user provides a new instruction or coding preference, update this file or create a relevant `.instructions.md` as needed.

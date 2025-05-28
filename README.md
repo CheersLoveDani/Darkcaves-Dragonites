@@ -14,14 +14,14 @@ This app serves TTRPG players who want to incorporate Pokemon into their D&D cam
 
 ### Phase 1: Core Foundation (Weeks 1-2)
 
-#### 1.1 Project Structure Setup (Days 1-3)
-- [~] **Frontend Structure**
-  - [~] Create `src/components` directory for reusable UI components
-  - [~] Create `src/pages` directory for main application views
-  - [~] Create `src/hooks` directory for custom React hooks
-  - [~] Create `src/utils` directory for helper functions
+#### 1.1 Project Structure Setup (Days 1-3) ✅ COMPLETE
+- [x] **Frontend Structure**
+  - [x] Create `src/components` directory for reusable UI components
+  - [x] Create `src/pages` directory for main application views
+  - [x] Create `src/hooks` directory for custom React hooks
+  - [x] Create `src/utils` directory for helper functions (with conversion, formatting, validation utilities)
   - [x] Create `src/types` directory for TypeScript interfaces
-  - [~] Create `src/stores` directory for state management
+  - [x] Create `src/stores` directory for state management
   - [x] Create `src/services` directory for API calls and data handling
 
 - [x] **Backend Structure (Rust/Tauri)**
@@ -44,6 +44,7 @@ This app serves TTRPG players who want to incorporate Pokemon into their D&D cam
   - [ ] `Sidebar` - Navigation menu for different sections
   - [ ] `Layout` - Main application wrapper component
   - [ ] `Footer` - App info and status indicators
+  - [ ] `VersionDisplay` - Permanent version number display in bottom-right corner
 
 - [ ] **Pokemon Display Components**
   - [ ] `PokemonCard` - Compact Pokemon display with image and basic info
