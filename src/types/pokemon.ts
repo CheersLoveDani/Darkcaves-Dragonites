@@ -3,9 +3,10 @@ export interface Pokemon {
   id: number;
   name: string;
   baseStats: BaseStats;
-  types: PokemonType[];
+  stats: Stat[]; // Adding this for compatibility with PokeAPI
+  types: PokemonTypeSlot[];
   moves: Move[];
-  abilities: Ability[];
+  abilities: AbilitySlot[];
   sprites: Sprites;
   height: number;
   weight: number;
@@ -86,4 +87,30 @@ export interface Trainer {
   id: number;
   name: string;
   createdDate: string;
+}
+
+export interface Stat {
+  base_stat: number;
+  effort: number;
+  stat: {
+    name: string;
+    url: string;
+  };
+}
+
+export interface PokemonTypeSlot {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
+}
+
+export interface AbilitySlot {
+  ability: {
+    name: string;
+    url: string;
+  };
+  is_hidden: boolean;
+  slot: number;
 }

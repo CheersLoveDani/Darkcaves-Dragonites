@@ -38,31 +38,31 @@ This app serves TTRPG players who want to incorporate Pokemon into their D&D cam
   - [x] Configure path aliases in tsconfig.json
   - [x] Set up environment variables for API keys
 
-#### 1.2 Core UI Components (Days 4-7)
-- [ ] **Layout Components**
-  - [ ] `Header` - Navigation bar with app title and menu
-  - [ ] `Sidebar` - Navigation menu for different sections
-  - [ ] `Layout` - Main application wrapper component
-  - [ ] `Footer` - App info and status indicators
-  - [ ] `VersionDisplay` - Permanent version number display in bottom-right corner
+#### 1.2 Core UI Components (Days 4-7) ✅ COMPLETE
+- [x] **Layout Components**
+  - [x] `Header` - Navigation bar with app title and menu
+  - [x] `Sidebar` - Navigation menu for different sections
+  - [x] `Layout` - Main application wrapper component
+  - [x] `Footer` - App info and status indicators
+  - [x] `VersionDisplay` - Permanent version number display in bottom-right corner
 
-- [ ] **Pokemon Display Components**
-  - [ ] `PokemonCard` - Compact Pokemon display with image and basic info
-  - [ ] `PokemonList` - Grid/list view for multiple Pokemon
-  - [ ] `StatBar` - Visual representation of Pokemon stats
-  - [ ] `TypeBadge` - Pokemon type indicator with appropriate styling
+- [x] **Pokemon Display Components**
+  - [x] `PokemonCard` - Compact Pokemon display with image and basic info
+  - [x] `PokemonList` - Grid/list view for multiple Pokemon
+  - [x] `StatBar` - Visual representation of Pokemon stats
+  - [x] `TypeBadge` - Pokemon type indicator with appropriate styling
 
-- [ ] **Form Components**
-  - [ ] `SearchBar` - Pokemon search functionality
-  - [ ] `FilterDropdown` - Filter Pokemon by type, generation, etc.
-  - [ ] `Button` - Reusable button component with variants
-  - [ ] `Modal` - Popup component for detailed views
+- [x] **Form Components**
+  - [x] `SearchBar` - Pokemon search functionality
+  - [x] `FilterDropdown` - Filter Pokemon by type, generation, etc.
+  - [x] `Button` - Reusable button component with variants
+  - [x] `Modal` - Popup component for detailed views
 
-- [ ] **D&D Stat Components**
-  - [ ] `StatBlock` - D&D 5e style stat block display
-  - [ ] `AbilityScore` - Individual ability score with modifier
-  - [ ] `SkillList` - Display of skills and proficiencies
-  - [ ] `ActionList` - Pokemon moves as D&D actions
+- [x] **D&D Stat Components**
+  - [x] `StatBlock` - D&D 5e style stat block display
+  - [x] `AbilityScore` - Individual ability score with modifier
+  - [x] `SkillList` - Display of skills and proficiencies
+  - [x] `ActionList` - Pokemon moves as D&D actions
 
 #### 1.3 Basic Styling System (Days 8-10)
 - [ ] **Design System Setup**

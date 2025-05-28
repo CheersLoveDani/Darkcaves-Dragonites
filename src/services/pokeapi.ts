@@ -127,13 +127,20 @@ class PokeApiService {
         speed:
           response.stats.find((s) => s.stat.name === "speed")?.base_stat || 0,
       },
+      stats: response.stats, // Add the original stats array
       types: response.types.map((t) => ({
-        name: t.type.name,
         slot: t.slot,
+        type: {
+          name: t.type.name,
+          url: t.type.url,
+        },
       })),
       abilities: response.abilities.map((a) => ({
-        name: a.ability.name,
-        isHidden: a.is_hidden,
+        ability: {
+          name: a.ability.name,
+          url: a.ability.url,
+        },
+        is_hidden: a.is_hidden,
         slot: a.slot,
       })),
       moves: response.moves.slice(0, 20).map((m) => ({

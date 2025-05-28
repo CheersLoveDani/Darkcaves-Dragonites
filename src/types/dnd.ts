@@ -95,3 +95,57 @@ export interface CustomRule {
   effect: string; // JSON representation of effect
   enabled: boolean;
 }
+
+// Additional types for complete D&D creature representation
+export interface DnDStats {
+  strength: number;
+  dexterity: number;
+  constitution: number;
+  intelligence: number;
+  wisdom: number;
+  charisma: number;
+}
+
+export interface DnDAction {
+  name: string;
+  description: string;
+  attackBonus?: string;
+  damage?: string;
+  damageType?: string;
+  additionalDamage?: string;
+  savingThrow?: string;
+  reach?: string;
+  range?: string;
+  targets?: string;
+  recharge?: string;
+  usageLimit?: string;
+}
+
+export interface DnDTrait {
+  name: string;
+  description: string;
+}
+
+export interface DnDCreature {
+  name: string;
+  type: string;
+  size: string;
+  alignment: string;
+  armorClass: number;
+  hitPoints: number | string;
+  speed: string;
+  stats: DnDStats;
+  savingThrows?: Record<string, number>;
+  skills?: Record<string, number>;
+  damageResistances?: string[];
+  damageImmunities?: string[];
+  conditionImmunities?: string[];
+  senses?: string;
+  languages?: string;
+  challengeRating: string;
+  proficiencyBonus?: string;
+  traits?: DnDTrait[];
+  actions?: DnDAction[];
+  reactions?: DnDAction[];
+  legendaryActions?: DnDAction[];
+}

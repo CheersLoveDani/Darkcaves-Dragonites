@@ -26,6 +26,13 @@ export function formatModifier(modifier: number): string {
 }
 
 /**
+ * Calculate D&D ability score modifier from score
+ */
+export function calculateModifier(abilityScore: number): number {
+  return Math.floor((abilityScore - 10) / 2);
+}
+
+/**
  * Format Pokemon ID with leading zeros
  */
 export function formatPokemonId(id: number): string {
@@ -47,6 +54,25 @@ export function camelCaseToTitle(str: string): string {
  */
 export function formatStatValue(value: number): string {
   return value.toString();
+}
+
+/**
+ * Format Pokemon height from decimeters to readable format
+ */
+export function formatHeight(heightInDecimeters: number): string {
+  const meters = heightInDecimeters / 10;
+  const feet = Math.floor(meters * 3.28084);
+  const inches = Math.round((meters * 3.28084 - feet) * 12);
+  return `${meters.toFixed(1)}m (${feet}'${inches}")`;
+}
+
+/**
+ * Format Pokemon weight from hectograms to readable format
+ */
+export function formatWeight(weightInHectograms: number): string {
+  const kg = weightInHectograms / 10;
+  const lbs = Math.round(kg * 2.20462);
+  return `${kg.toFixed(1)}kg (${lbs} lbs)`;
 }
 
 /**
