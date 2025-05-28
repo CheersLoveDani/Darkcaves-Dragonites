@@ -13,7 +13,75 @@ This app serves TTRPG players who want to incorporate Pokemon into their D&D cam
 ## Development Plan
 
 ### Phase 1: Core Foundation (Weeks 1-2)
-- [ ] Set up project structure and basic UI components
+
+#### 1.1 Project Structure Setup (Days 1-3)
+- [~] **Frontend Structure**
+  - [~] Create `src/components` directory for reusable UI components
+  - [~] Create `src/pages` directory for main application views
+  - [~] Create `src/hooks` directory for custom React hooks
+  - [~] Create `src/utils` directory for helper functions
+  - [x] Create `src/types` directory for TypeScript interfaces
+  - [~] Create `src/stores` directory for state management
+  - [x] Create `src/services` directory for API calls and data handling
+
+- [x] **Backend Structure (Rust/Tauri)**
+  - [x] Organize `src-tauri/src` with modules:
+    - [x] `pokemon.rs` - Pokemon data handling
+    - [x] `converter.rs` - Stat conversion logic
+    - [x] `database.rs` - SQLite operations
+    - [x] `commands.rs` - Tauri command definitions
+  - [x] Set up Cargo.toml dependencies (serde, sqlx, reqwest)
+
+- [x] **Configuration & Tooling**
+  - [x] Configure Tailwind CSS for styling
+  - [x] Set up ESLint and Prettier for code formatting
+  - [x] Configure path aliases in tsconfig.json
+  - [x] Set up environment variables for API keys
+
+#### 1.2 Core UI Components (Days 4-7)
+- [ ] **Layout Components**
+  - [ ] `Header` - Navigation bar with app title and menu
+  - [ ] `Sidebar` - Navigation menu for different sections
+  - [ ] `Layout` - Main application wrapper component
+  - [ ] `Footer` - App info and status indicators
+
+- [ ] **Pokemon Display Components**
+  - [ ] `PokemonCard` - Compact Pokemon display with image and basic info
+  - [ ] `PokemonList` - Grid/list view for multiple Pokemon
+  - [ ] `StatBar` - Visual representation of Pokemon stats
+  - [ ] `TypeBadge` - Pokemon type indicator with appropriate styling
+
+- [ ] **Form Components**
+  - [ ] `SearchBar` - Pokemon search functionality
+  - [ ] `FilterDropdown` - Filter Pokemon by type, generation, etc.
+  - [ ] `Button` - Reusable button component with variants
+  - [ ] `Modal` - Popup component for detailed views
+
+- [ ] **D&D Stat Components**
+  - [ ] `StatBlock` - D&D 5e style stat block display
+  - [ ] `AbilityScore` - Individual ability score with modifier
+  - [ ] `SkillList` - Display of skills and proficiencies
+  - [ ] `ActionList` - Pokemon moves as D&D actions
+
+#### 1.3 Basic Styling System (Days 8-10)
+- [ ] **Design System Setup**
+  - [ ] Define color palette (Pokemon-themed with D&D elements)
+  - [ ] Set up typography scale and font imports
+  - [ ] Create spacing and sizing utilities
+  - [ ] Define component variants and states
+
+- [ ] **Theme Configuration**
+  - [ ] Light/dark mode toggle functionality
+  - [ ] CSS custom properties for dynamic theming
+  - [ ] Responsive breakpoints for mobile/desktop
+  - [ ] Animation and transition utilities
+
+- [ ] **Component Styling**
+  - [ ] Style all basic UI components
+  - [ ] Implement hover and focus states
+  - [ ] Add loading and disabled states
+  - [ ] Create consistent spacing and layout patterns
+
 - [ ] Implement Pokemon data source (API integration or local database)
 - [ ] Create basic stat conversion algorithms
 - [ ] Design main application layout and navigation
