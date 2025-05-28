@@ -1,26 +1,31 @@
 // filepath: e:\development\Darkcaves-Dragonites\src\components\pokemon\TypeBadge.tsx
 import React from "react";
-import { POKEMON_TYPE_COLORS } from "../../utils/constants";
+import {
+  getTypeColor,
+  getComponentSize,
+  combineClasses,
+  transitions,
+  elevation,
+} from "../../utils/designTokens";
 
 interface TypeBadgeProps {
   type: string;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  variant?: "solid" | "outline" | "subtle";
   className?: string;
+  interactive?: boolean;
+  onClick?: () => void;
 }
-
-const typeSizes = {
-  sm: "px-2 py-1 text-xs",
-  md: "px-3 py-1 text-sm",
-  lg: "px-4 py-2 text-base",
-};
 
 export const TypeBadge: React.FC<TypeBadgeProps> = ({
   type,
   size = "md",
+  variant = "solid",
   className = "",
 }) => {
-  const normalizedType = type.toLowerCase() as keyof typeof POKEMON_TYPE_COLORS;
-  const backgroundColor = POKEMON_TYPE_COLORS[normalizedType] || "#68D391";
+  const normalizedType = type.toLowerCase();
+  const typeColor = getTypeColor(normalizedType);
+  const sizeConfig = getComponentSize(size);
 
   // Calculate if the background is light or dark to determine text color
   const isLight = (color: string) => {
@@ -32,16 +37,47 @@ export const TypeBadge: React.FC<TypeBadgeProps> = ({
     return brightness > 155;
   };
 
-  const textColor = isLight(backgroundColor) ? "#000000" : "#FFFFFF";
-  const sizeClasses = typeSizes[size];
+  const getVariantStyles = () => {
+    const textColor = isLight(typeColor) ? "#000000" : "#FFFFFF";
+
+    switch (variant) {
+      case "outline":
+        return {
+          backgroundColor: "transparent",
+          color: typeColor,
+          border: `2px solid ${typeColor}`,
+        };
+      case "subtle":
+        return {
+          backgroundColor: `${typeColor}20`, // 20% opacity
+          color: typeColor,
+        };
+      default: // solid
+        return {
+          backgroundColor: typeColor,
+          color: textColor,
+        };
+    }
+  };
+
+  const variantStyles = getVariantStyles();
 
   return (
     <span
-      className={`inline-flex items-center justify-center rounded-full font-medium capitalize ${sizeClasses} ${className}`}
-      style={{
-        backgroundColor,
-        color: textColor,
-      }}
+      className={combineClasses(
+        "inline-flex items-center justify-center rounded-full font-medium capitalize",
+        "border-0", // Reset border for variants that don't use it
+        sizeConfig.padding,
+        sizeConfig.text,
+        transitions.colorsAndShadow,
+        transitions.duration.normal,
+        elevation.sm,
+        "hover:scale-105 transform",
+        "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500",
+        className
+      )}
+      style={variantStyles}
+      title={`${type.charAt(0).toUpperCase() + type.slice(1)} type`}
     >
       {type}
     </span>

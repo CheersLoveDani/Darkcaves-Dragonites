@@ -114,122 +114,111 @@ export const StatBlock: React.FC<StatBlockProps> = ({
           <div className="text-gray-900 dark:text-gray-100 font-semibold">
             {speed}
           </div>
-        </div>{" "}
+        </div>
       </div>
 
       <StatBlockDivider />
 
       {/* Ability Scores */}
-      <div className="border-t border-b border-red-800 dark:border-red-600 py-3 mb-4">
-        <div className="grid grid-cols-6 gap-2 text-center">
-          <AbilityScore label="STR" value={stats.strength} />
-          <AbilityScore label="DEX" value={stats.dexterity} />
-          <AbilityScore label="CON" value={stats.constitution} />
-          <AbilityScore label="INT" value={stats.intelligence} />
-          <AbilityScore label="WIS" value={stats.wisdom} />
-          <AbilityScore label="CHA" value={stats.charisma} />
+      <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 mb-4">
+        {" "}
+        <AbilityScore label="STR" value={stats.strength} />
+        <AbilityScore label="DEX" value={stats.dexterity} />
+        <AbilityScore label="CON" value={stats.constitution} />
+        <AbilityScore label="INT" value={stats.intelligence} />
+        <AbilityScore label="WIS" value={stats.wisdom} />
+        <AbilityScore label="CHA" value={stats.charisma} />
+      </div>
+
+      <StatBlockDivider />
+
+      {/* Secondary Stats */}
+      <div className="space-y-2 mb-4 text-sm">
+        {savingThrows && Object.keys(savingThrows).length > 0 && (
+          <div className="flex flex-wrap">
+            <StatLabel>Saving Throws</StatLabel>
+            <span className="text-gray-900 dark:text-gray-100">
+              {Object.entries(savingThrows)
+                .map(
+                  ([ability, modifier]) =>
+                    `${ability.toUpperCase()} ${formatModifier(modifier as number)}`
+                )
+                .join(", ")}
+            </span>
+          </div>
+        )}
+
+        {skills && Object.keys(skills).length > 0 && (
+          <div className="mb-3">
+            <SkillList skills={skills} />
+          </div>
+        )}
+
+        {damageResistances && damageResistances.length > 0 && (
+          <div className="flex flex-wrap">
+            <StatLabel>Damage Resistances</StatLabel>
+            <span className="text-gray-900 dark:text-gray-100">
+              {damageResistances.join(", ")}
+            </span>
+          </div>
+        )}
+
+        {damageImmunities && damageImmunities.length > 0 && (
+          <div className="flex flex-wrap">
+            <StatLabel>Damage Immunities</StatLabel>
+            <span className="text-gray-900 dark:text-gray-100">
+              {damageImmunities.join(", ")}
+            </span>
+          </div>
+        )}
+
+        {conditionImmunities && conditionImmunities.length > 0 && (
+          <div className="flex flex-wrap">
+            <StatLabel>Condition Immunities</StatLabel>
+            <span className="text-gray-900 dark:text-gray-100">
+              {conditionImmunities.join(", ")}
+            </span>
+          </div>
+        )}
+
+        {senses && (
+          <div className="flex flex-wrap">
+            <StatLabel>Senses</StatLabel>
+            <span className="text-gray-900 dark:text-gray-100">{senses}</span>
+          </div>
+        )}
+
+        {languages && (
+          <div className="flex flex-wrap">
+            <StatLabel>Languages</StatLabel>
+            <span className="text-gray-900 dark:text-gray-100">
+              {languages}
+            </span>
+          </div>
+        )}
+
+        <div className="flex flex-wrap">
+          <StatLabel>Challenge</StatLabel>
+          <span className="text-gray-900 dark:text-gray-100">
+            {" "}
+            {challengeRating} (XP:{" "}
+            {proficiencyBonus ? Number(proficiencyBonus) * 25 : 0})
+          </span>
         </div>
       </div>
 
-      {/* Saving Throws */}
-      {savingThrows && Object.keys(savingThrows).length > 0 && (
-        <div className="mb-3">
-          <span className="font-semibold text-red-800 dark:text-red-400">
-            Saving Throws{" "}
-          </span>
-          <span className="text-gray-900 dark:text-gray-100">
-            {Object.entries(savingThrows)
-              .map(
-                ([ability, modifier]) =>
-                  `${ability.toUpperCase()} ${formatModifier(modifier)}`
-              )
-              .join(", ")}
-          </span>
-        </div>
-      )}
-
-      {/* Skills */}
-      {skills && Object.keys(skills).length > 0 && (
-        <div className="mb-3">
-          <SkillList skills={skills} />
-        </div>
-      )}
-
-      {/* Damage Resistances */}
-      {damageResistances && damageResistances.length > 0 && (
-        <div className="mb-3">
-          <span className="font-semibold text-red-800 dark:text-red-400">
-            Damage Resistances{" "}
-          </span>
-          <span className="text-gray-900 dark:text-gray-100">
-            {damageResistances.join(", ")}
-          </span>
-        </div>
-      )}
-
-      {/* Damage Immunities */}
-      {damageImmunities && damageImmunities.length > 0 && (
-        <div className="mb-3">
-          <span className="font-semibold text-red-800 dark:text-red-400">
-            Damage Immunities{" "}
-          </span>
-          <span className="text-gray-900 dark:text-gray-100">
-            {damageImmunities.join(", ")}
-          </span>
-        </div>
-      )}
-
-      {/* Condition Immunities */}
-      {conditionImmunities && conditionImmunities.length > 0 && (
-        <div className="mb-3">
-          <span className="font-semibold text-red-800 dark:text-red-400">
-            Condition Immunities{" "}
-          </span>
-          <span className="text-gray-900 dark:text-gray-100">
-            {conditionImmunities.join(", ")}
-          </span>
-        </div>
-      )}
-
-      {/* Senses */}
-      {senses && (
-        <div className="mb-3">
-          <span className="font-semibold text-red-800 dark:text-red-400">
-            Senses{" "}
-          </span>
-          <span className="text-gray-900 dark:text-gray-100">{senses}</span>
-        </div>
-      )}
-
-      {/* Languages */}
-      {languages && (
-        <div className="mb-3">
-          <span className="font-semibold text-red-800 dark:text-red-400">
-            Languages{" "}
-          </span>
-          <span className="text-gray-900 dark:text-gray-100">{languages}</span>
-        </div>
-      )}
-
-      {/* Challenge Rating */}
-      <div className="mb-4">
-        <span className="font-semibold text-red-800 dark:text-red-400">
-          Challenge{" "}
-        </span>
-        <span className="text-gray-900 dark:text-gray-100">
-          {challengeRating} ({proficiencyBonus ? `${proficiencyBonus} PB` : ""})
-        </span>
-      </div>
+      <StatBlockDivider />
 
       {/* Traits */}
       {traits && traits.length > 0 && (
-        <div className="border-t border-red-800 dark:border-red-600 pt-4 mb-4">
-          {traits.map((trait, index) => (
+        <div className="mb-4">
+          <h3 className="text-lg font-bold text-dnd-damage dark:text-red-400 mb-3 font-fantasy">
+            Traits
+          </h3>
+          {traits.map((trait: any, index: number) => (
             <div key={index} className="mb-3">
-              <p className="text-gray-900 dark:text-gray-100">
-                <span className="font-semibold italic text-red-800 dark:text-red-400">
-                  {trait.name}.{" "}
-                </span>
+              <p className="text-sm text-gray-900 dark:text-gray-100">
+                <span className="font-semibold italic">{trait.name}.</span>{" "}
                 {trait.description}
               </p>
             </div>
@@ -239,8 +228,8 @@ export const StatBlock: React.FC<StatBlockProps> = ({
 
       {/* Actions */}
       {actions && actions.length > 0 && (
-        <div className="border-t border-red-800 dark:border-red-600 pt-4 mb-4">
-          <h3 className="text-xl font-bold text-red-800 dark:text-red-400 mb-3">
+        <div className="mb-4">
+          <h3 className="text-lg font-bold text-dnd-damage dark:text-red-400 mb-3 font-fantasy">
             Actions
           </h3>
           <ActionList actions={actions} />
@@ -249,8 +238,8 @@ export const StatBlock: React.FC<StatBlockProps> = ({
 
       {/* Reactions */}
       {reactions && reactions.length > 0 && (
-        <div className="border-t border-red-800 dark:border-red-600 pt-4 mb-4">
-          <h3 className="text-xl font-bold text-red-800 dark:text-red-400 mb-3">
+        <div className="mb-4">
+          <h3 className="text-lg font-bold text-dnd-damage dark:text-red-400 mb-3 font-fantasy">
             Reactions
           </h3>
           <ActionList actions={reactions} />
@@ -259,8 +248,8 @@ export const StatBlock: React.FC<StatBlockProps> = ({
 
       {/* Legendary Actions */}
       {legendaryActions && legendaryActions.length > 0 && (
-        <div className="border-t border-red-800 dark:border-red-600 pt-4">
-          <h3 className="text-xl font-bold text-red-800 dark:text-red-400 mb-3">
+        <div>
+          <h3 className="text-lg font-bold text-dnd-damage dark:text-red-400 mb-3 font-fantasy">
             Legendary Actions
           </h3>
           <ActionList actions={legendaryActions} />
