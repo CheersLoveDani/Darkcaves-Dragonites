@@ -18,6 +18,16 @@
 - If both types of instruction files exist, follow all instructions and avoid conflicts.
 - Never replace an existing file with a new file—always edit and override the existing file content instead.
 
+## README and Progress Tracking
+
+- Always refer back to the README.md when working on features or tasks.
+- Update the README.md progress markers whenever you complete a task or feature.
+- Progress marker conventions:
+  - `[x]` means the task is complete
+  - `[~]` means the task is in progress
+  - `[ ]` means the task is not started
+- When completing a phase or major milestone, update the README to reflect current status and next steps.
+
 ## Communication
 
 - If the user provides a new instruction or coding preference, update this file or create a relevant `.instructions.md` as needed.
