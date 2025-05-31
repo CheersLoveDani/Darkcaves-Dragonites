@@ -7,15 +7,9 @@ import VersionDisplay from "./VersionDisplay";
 
 interface LayoutProps {
   children: React.ReactNode;
-  activeTab?: string;
-  onTabChange?: (tab: string) => void;
 }
 
-export const Layout: React.FC<LayoutProps> = ({
-  children,
-  activeTab = "search",
-  onTabChange,
-}) => {
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleMenuToggle = () => {
@@ -29,12 +23,7 @@ export const Layout: React.FC<LayoutProps> = ({
   return (
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
       {/* Sidebar */}
-      <Sidebar
-        isOpen={sidebarOpen}
-        onClose={handleSidebarClose}
-        activeTab={activeTab}
-        onTabChange={onTabChange}
-      />
+      <Sidebar isOpen={sidebarOpen} onClose={handleSidebarClose} />
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">

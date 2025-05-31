@@ -1,24 +1,43 @@
-// filepath: e:\development\Darkcaves-Dragonites\src\components\layout\Sidebar.tsx
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 interface SidebarProps {
   isOpen: boolean;
   onClose?: () => void;
-  activeTab?: string;
-  onTabChange?: (tab: string) => void;
 }
 
 interface NavItem {
   id: string;
   label: string;
   icon: React.ReactNode;
-  href?: string;
+  href: string;
 }
 
 const navigationItems: NavItem[] = [
   {
-    id: "search",
-    label: "Pokemon Search",
+    id: "home",
+    label: "Home",
+    href: "/",
+    icon: (
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+        />
+      </svg>
+    ),
+  },
+  {
+    id: "pokedex",
+    label: "Pokedex",
+    href: "/pokedex",
     icon: (
       <svg
         className="w-5 h-5"
@@ -38,6 +57,7 @@ const navigationItems: NavItem[] = [
   {
     id: "collection",
     label: "My Collection",
+    href: "/collection",
     icon: (
       <svg
         className="w-5 h-5"
@@ -57,6 +77,7 @@ const navigationItems: NavItem[] = [
   {
     id: "converter",
     label: "Stat Converter",
+    href: "/converter",
     icon: (
       <svg
         className="w-5 h-5"
@@ -76,6 +97,7 @@ const navigationItems: NavItem[] = [
   {
     id: "settings",
     label: "Settings",
+    href: "/settings",
     icon: (
       <svg
         className="w-5 h-5"
@@ -100,15 +122,11 @@ const navigationItems: NavItem[] = [
   },
 ];
 
-export const Sidebar: React.FC<SidebarProps> = ({
-  isOpen,
-  onClose,
-  activeTab = "search",
-  onTabChange,
-}) => {
-  const handleNavClick = (itemId: string) => {
-    onTabChange?.(itemId);
-    onClose?.(); // Close sidebar on mobile after selection
+export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const location = useLocation();
+
+  const handleNavClick = () => {
+    onClose?.(); // Close sidebar on mobile after navigation
   };
 
   return (
@@ -156,18 +174,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Navigation */}
         <nav className="flex-1 px-4 py-6 space-y-2">
           {navigationItems.map((item) => (
-            <button
+            <Link
               key={item.id}
-              onClick={() => handleNavClick(item.id)}
-              className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                activeTab === item.id
+              to={item.href}
+              onClick={handleNavClick}
+              className={`flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                location.pathname === item.href
                   ? "bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100"
                   : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
               }`}
             >
               <span className="mr-3">{item.icon}</span>
               {item.label}
-            </button>
+            </Link>
           ))}
         </nav>
 

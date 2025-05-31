@@ -6,3 +6,5 @@ export { FilterDropdown } from "./FilterDropdown";
 export { ThemeToggle } from "./ThemeToggle";
 export { LoadingSkeleton } from "./LoadingSkeleton";
 export { ScrollToTop } from "./ScrollToTop";
+export { ErrorState } from "./ErrorState";
+export { Breadcrumb } from "./Breadcrumb";

@@ -1,13 +1,13 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-mod pokemon;
+mod commands;
 mod converter;
 mod database;
-mod commands;
+mod pokemon;
 
-use database::Database;
 use commands::*;
+use database::Database;
 use tauri::Manager;
 
 fn main() {
@@ -27,19 +27,20 @@ fn main() {
                     }
                 }
             });
-            
+
             Ok(())
-        })        .invoke_handler(tauri::generate_handler![
+        })
+        .invoke_handler(tauri::generate_handler![
             fetch_pokemon,
             search_pokemon,
-            convert_pokemon_to_dnd,
-            create_trainer,
-            get_trainer,
-            capture_pokemon,
-            get_trainer_pokemon,
-            update_pokemon_level,
-            release_pokemon,
-            export_stat_block
+            clear_pokemon_cache,
+            clear_expired_cache,
+            get_cache_stats,
+            get_pokemon_batch,
+            get_pokemon_list,
+            get_pokemon_list_improved,
+            initialize_pokemon_data,
+            ensure_pokemon_database_initialized
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

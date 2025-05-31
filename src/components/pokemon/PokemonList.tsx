@@ -77,13 +77,12 @@ export const PokemonList: React.FC<PokemonListProps> = ({
       {/* Results count */}
       <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {pokemon.length} Pokemon found
-      </div>
-
+      </div>{" "}
       {/* Pokemon list/grid */}
       <div className={gridClasses}>
-        {pokemon.map((poke) => (
+        {pokemon.map((poke, index) => (
           <PokemonCard
-            key={poke.id}
+            key={`${poke.id}-${index}`}
             pokemon={poke}
             variant={viewMode === "list" ? "detailed" : "compact"}
             onClick={() => handlePokemonClick(poke)}
@@ -91,21 +90,6 @@ export const PokemonList: React.FC<PokemonListProps> = ({
           />
         ))}
       </div>
-
-      {/* Load more button placeholder - can be implemented later */}
-      {pokemon.length > 0 && pokemon.length % 20 === 0 && (
-        <div className="mt-8 text-center">
-          <button
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            onClick={() => {
-              // TODO: Implement load more functionality
-              console.log("Load more Pokemon...");
-            }}
-          >
-            Load More
-          </button>
-        </div>
-      )}
     </div>
   );
 };

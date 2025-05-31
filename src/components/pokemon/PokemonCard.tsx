@@ -120,16 +120,18 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
               <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
                 #{pokemon.id.toString().padStart(3, "0")}
               </span>
-            </div>
+            </div>{" "}
             <div className="flex flex-wrap gap-1.5">
-              {pokemon.types.map((typeInfo) => (
-                <TypeBadge
-                  key={typeInfo.type.name}
-                  type={typeInfo.type.name}
-                  size="sm"
-                  variant="solid"
-                />
-              ))}
+              {pokemon.types?.map((typeInfo) =>
+                typeInfo?.type?.name ? (
+                  <TypeBadge
+                    key={typeInfo.type.name}
+                    type={typeInfo.type.name}
+                    size="sm"
+                    variant="solid"
+                  />
+                ) : null
+              )}
             </div>
           </div>
         </div>{" "}
@@ -161,18 +163,20 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
               <h4 className="text-sm font-display font-semibold text-text-primary dark:text-text-primary-dark flex items-center gap-2">
                 <span className="w-2 h-2 bg-primary-500 rounded-full"></span>
                 Base Stats
-              </h4>
+              </h4>{" "}
               <div className="space-y-2.5">
-                {pokemon.stats.map((statInfo) => (
-                  <StatBar
-                    key={statInfo.stat.name}
-                    label={statInfo.stat.name.replace("-", " ")}
-                    value={statInfo.base_stat}
-                    maxValue={255}
-                    showValue={true}
-                    size="md"
-                  />
-                ))}
+                {pokemon.stats?.map((statInfo) =>
+                  statInfo?.stat?.name ? (
+                    <StatBar
+                      key={statInfo.stat.name}
+                      label={statInfo.stat.name.replace("-", " ")}
+                      value={statInfo.base_stat}
+                      maxValue={255}
+                      showValue={true}
+                      size="md"
+                    />
+                  ) : null
+                )}
               </div>
             </div>
 
@@ -182,30 +186,32 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({
                 <h4 className="text-sm font-display font-semibold text-text-primary dark:text-text-primary-dark flex items-center gap-2">
                   <span className="w-2 h-2 bg-secondary-500 rounded-full"></span>
                   Abilities
-                </h4>
+                </h4>{" "}
                 <div className="flex flex-wrap gap-2">
-                  {pokemon.abilities.map((abilityInfo, index) => (
-                    <span
-                      key={abilityInfo.ability.name}
-                      className={`
-                        inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full
-                        transition-all duration-200 hover:scale-105
-                        ${
-                          abilityInfo.is_hidden
-                            ? "bg-legendary-100 dark:bg-legendary-900/30 text-legendary-700 dark:text-legendary-300 ring-1 ring-legendary-200 dark:ring-legendary-700"
-                            : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
-                        }
-                      `}
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
-                      {abilityInfo.ability.name.replace("-", " ")}
-                      {abilityInfo.is_hidden && (
-                        <span className="ml-1 text-xs opacity-75">
-                          (Hidden)
-                        </span>
-                      )}
-                    </span>
-                  ))}
+                  {pokemon.abilities?.map((abilityInfo, index) =>
+                    abilityInfo?.ability?.name ? (
+                      <span
+                        key={abilityInfo.ability.name}
+                        className={`
+                          inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full
+                          transition-all duration-200 hover:scale-105
+                          ${
+                            abilityInfo.is_hidden
+                              ? "bg-legendary-100 dark:bg-legendary-900/30 text-legendary-700 dark:text-legendary-300 ring-1 ring-legendary-200 dark:ring-legendary-700"
+                              : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                          }
+                        `}
+                        style={{ animationDelay: `${index * 50}ms` }}
+                      >
+                        {abilityInfo.ability.name.replace("-", " ")}
+                        {abilityInfo.is_hidden && (
+                          <span className="ml-1 text-xs opacity-75">
+                            (Hidden)
+                          </span>
+                        )}
+                      </span>
+                    ) : null
+                  )}
                 </div>
               </div>
             )}

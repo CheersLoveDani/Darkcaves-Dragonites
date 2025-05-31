@@ -1,7 +1,7 @@
 {
   "name": "darkcaves-dragonites",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,7 +12,8 @@
   "dependencies": {
     "@tauri-apps/api": "^1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.6.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",

@@ -155,6 +155,32 @@ export interface ConversionSettings {
   };
 }
 
+// Cache management types
+export interface CacheStats {
+  cached_pokemon_count: number;
+  last_updated: string;
+}
+
+// Enhanced Pokemon list response with pagination
+export interface PokemonListResponse {
+  pokemon: Pokemon[];
+  total_count: number;
+  has_more: boolean;
+}
+
+// Filter options for Pokemon lists
+export interface PokemonFilters {
+  type?: string;
+  search?: string;
+  generation?: number;
+}
+
+// Pagination parameters
+export interface PaginationParams {
+  offset: number;
+  limit: number;
+}
+
 // Re-export types from other modules
 export * from "./pokemon";
 export * from "./dnd";

@@ -2,6 +2,14 @@
 
 A desktop application that converts Pokemon game statistics into D&D 5e compatible stats for tabletop RPG play. Built with Tauri, React, and TypeScript.
 
+## Progress Key
+
+| Symbol | Meaning      |
+|--------|--------------|
+| [x]    | Complete     |
+| [~]    | In Progress  |
+| [ ]    | Not Started  |
+
 ## Project Overview
 
 This app serves TTRPG players who want to incorporate Pokemon into their D&D campaigns by:
@@ -10,141 +18,149 @@ This app serves TTRPG players who want to incorporate Pokemon into their D&D cam
 - Managing captured Pokemon collections for players
 - Providing stat blocks compatible with D&D 5e mechanics
 
+### Pages Overview
+
+The application features several main pages:
+
+1. **Pokedex Page**: Browse all available Pokemon, search/filter, and add Pokemon to your collection.
+2. **Trainer Page**: View your trainer profile, including trainer level, D&D-like stats, and an overview of your current party of up to 6 Pokemon.
+3. **Pokemon Party Page**: Manage your active party of up to 6 Pokemon, with options to send Pokemon to storage (the box).
+4. **Pokemon Box Page**: View and organize all Pokemon in your storage box, with sorting and transfer options to move Pokemon between your box and party.
+5. **Individual Pokemon Page**: See detailed information for a specific Pokemon, including game stats, converted D&D stats, moves, abilities, and more.
+
 ## Development Plan
 
 ### Phase 1: Core Foundation (Weeks 1-2)
 
 #### 1.1 Project Structure Setup (Days 1-3) ✅ COMPLETE
-- [x] **Frontend Structure**
-  - [x] Create `src/components` directory for reusable UI components
-  - [x] Create `src/pages` directory for main application views
-  - [x] Create `src/hooks` directory for custom React hooks
-  - [x] Create `src/utils` directory for helper functions (with conversion, formatting, validation utilities)
-  - [x] Create `src/types` directory for TypeScript interfaces
-  - [x] Create `src/stores` directory for state management
-  - [x] Create `src/services` directory for API calls and data handling
+- [x] **1.1.1 Frontend Structure**
+  - [x] 1.1.1.1 Create `src/components` directory for reusable UI components
+  - [x] 1.1.1.2 Create `src/pages` directory for main application views
+  - [x] 1.1.1.3 Create `src/hooks` directory for custom React hooks
+  - [x] 1.1.1.4 Create `src/utils` directory for helper functions (with conversion, formatting, validation utilities)
+  - [x] 1.1.1.5 Create `src/types` directory for TypeScript interfaces
+  - [x] 1.1.1.6 Create `src/stores` directory for state management
+  - [x] 1.1.1.7 Create `src/services` directory for API calls and data handling
 
-- [x] **Backend Structure (Rust/Tauri)**
-  - [x] Organize `src-tauri/src` with modules:
-    - [x] `pokemon.rs` - Pokemon data handling
-    - [x] `converter.rs` - Stat conversion logic
-    - [x] `database.rs` - SQLite operations
-    - [x] `commands.rs` - Tauri command definitions
-  - [x] Set up Cargo.toml dependencies (serde, sqlx, reqwest)
+- [x] **1.1.2 Backend Structure (Rust/Tauri)**
+  - [x] 1.1.2.1 Organize `src-tauri/src` with modules:
+    - [x] 1.1.2.1.1 `pokemon.rs` - Pokemon data handling
+    - [x] 1.1.2.1.2 `converter.rs` - Stat conversion logic
+    - [x] 1.1.2.1.3 `database.rs` - SQLite operations
+    - [x] 1.1.2.1.4 `commands.rs` - Tauri command definitions
+  - [x] 1.1.2.2 Set up Cargo.toml dependencies (serde, sqlx, reqwest)
 
-- [x] **Configuration & Tooling**
-  - [x] Configure Tailwind CSS for styling
-  - [x] Set up ESLint and Prettier for code formatting
-  - [x] Configure path aliases in tsconfig.json
-  - [x] Set up environment variables for API keys
+- [x] **1.1.3 Configuration & Tooling**
+  - [x] 1.1.3.1 Configure Tailwind CSS for styling
+  - [x] 1.1.3.2 Set up ESLint and Prettier for code formatting
+  - [x] 1.1.3.3 Configure path aliases in tsconfig.json
+  - [x] 1.1.3.4 Set up environment variables for API keys
 
 #### 1.2 Core UI Components (Days 4-7) ✅ COMPLETE
-- [x] **Layout Components**
-  - [x] `Header` - Navigation bar with app title and menu
-  - [x] `Sidebar` - Navigation menu for different sections
-  - [x] `Layout` - Main application wrapper component
-  - [x] `Footer` - App info and status indicators
-  - [x] `VersionDisplay` - Permanent version number display in bottom-right corner
+- [x] **1.2.1 Layout Components**
+  - [x] 1.2.1.1 `Header` - Navigation bar with app title and menu
+  - [x] 1.2.1.2 `Sidebar` - Navigation menu for different sections
+  - [x] 1.2.1.3 `Layout` - Main application wrapper component
+  - [x] 1.2.1.4 `Footer` - App info and status indicators
+  - [x] 1.2.1.5 `VersionDisplay` - Permanent version number display in bottom-right corner
 
-- [x] **Pokemon Display Components**
-  - [x] `PokemonCard` - Compact Pokemon display with image and basic info
-  - [x] `PokemonList` - Grid/list view for multiple Pokemon
-  - [x] `StatBar` - Visual representation of Pokemon stats
-  - [x] `TypeBadge` - Pokemon type indicator with appropriate styling
+- [x] **1.2.2 Pokemon Display Components**
+  - [x] 1.2.2.1 `PokemonCard` - Compact Pokemon display with image and basic info
+  - [x] 1.2.2.2 `PokemonList` - Grid/list view for multiple Pokemon
+  - [x] 1.2.2.3 `StatBar` - Visual representation of Pokemon stats
+  - [x] 1.2.2.4 `TypeBadge` - Pokemon type indicator with appropriate styling
 
-- [x] **Form Components**
-  - [x] `SearchBar` - Pokemon search functionality
-  - [x] `FilterDropdown` - Filter Pokemon by type, generation, etc.
-  - [x] `Button` - Reusable button component with variants
-  - [x] `Modal` - Popup component for detailed views
+- [x] **1.2.3 Form Components**
+  - [x] 1.2.3.1 `SearchBar` - Pokemon search functionality
+  - [x] 1.2.3.2 `FilterDropdown` - Filter Pokemon by type, generation, etc.
+  - [x] 1.2.3.3 `Button` - Reusable button component with variants
+  - [x] 1.2.3.4 `Modal` - Popup component for detailed views
 
-- [x] **D&D Stat Components**
-  - [x] `StatBlock` - D&D 5e style stat block display
-  - [x] `AbilityScore` - Individual ability score with modifier
-  - [x] `SkillList` - Display of skills and proficiencies
-  - [x] `ActionList` - Pokemon moves as D&D actions
+- [x] **1.2.4 D&D Stat Components**
+  - [x] 1.2.4.1 `StatBlock` - D&D 5e style stat block display
+  - [x] 1.2.4.2 `AbilityScore` - Individual ability score with modifier
+  - [x] 1.2.4.3 `SkillList` - Display of skills and proficiencies
+  - [x] 1.2.4.4 `ActionList` - Pokemon moves as D&D actions
 
-#### 1.3 Basic Styling System (Days 8-10)
-- [x] **Design System Setup**
-  - [x] Enhance color palette with Pokemon type colors (fire: red/orange, water: blue, grass: green, etc.)
-  - [x] Use Pokemon-themed accent colors (electric yellow, psychic pink, dragon purple for highlights)
-  - [x] Import and configure Pokemon-themed fonts (Orbitron for headers, system fonts for body)  - [x] Create component size scale (xs, sm, md, lg, xl) for consistent sizing
-  - [x] Define elevation/shadow system for cards and modals
-  - [x] Set up icon system (Pokemon types, stat categories, UI actions)
+#### 1.3 Basic Styling & Functionality (Days 8-10)
+- [x] **1.3.1 Design System Setup**
+  - [x] 1.3.1.1 Color palette with Pokemon type colors
+  - [x] 1.3.1.2 Pokemon-themed fonts and icon system
+  - [x] 1.3.1.3 Component size scale and elevation system
+- [x] **1.3.2 Theme Configuration**
+  - [~] 1.3.2.1 Light/dark mode toggle with persistent storage
+  - [x] 1.3.2.2 Responsive breakpoints and smooth transitions
+  - [x] 1.3.2.3 Theme context/provider for React
+- [x] **1.3.3 Component Functionality**
+  - [x] 1.3.3.1 Type badges styled with official colors
+  - [x] 1.3.3.2 Loading skeletons for performance
+  - [x] 1.3.3.3 Focus indicators and accessibility improvements
+- [x] **1.3.4 Layout & Navigation**
+  - [x] 1.3.4.1 Enhanced header and navigation
+  - [x] 1.3.4.2 Responsive grid layouts for Pokemon collections
+  - [x] 1.3.4.3 Scroll-to-top for long lists
+- [x] **1.3.5 Accessibility & UX**
+  - [x] 1.3.5.1 Color contrast, keyboard navigation, screen reader support
+  - [x] 1.3.5.2 Reduced motion preferences
+  - [x] 1.3.5.3 Consistent loading and error handling UI
+  - [x] 1.3.5.4 Focus management for modals/forms
 
-- [x] **Theme Configuration**
-  - [x] Implement light/dark mode toggle with persistent storage
-  - [x] Create CSS custom properties for dynamic color switching
-  - [x] Configure responsive breakpoints (mobile: 640px, tablet: 768px, desktop: 1024px)
-  - [x] Add smooth transitions and micro-animations (hover, focus, state changes)
-  - [x] Set up theme context and provider for React components
-  - [x] Create theme-aware utility classes
-
-- [~] **Component Styling Enhancement**
-  - [x] Refine Pokemon type badges with official Pokemon type colors
-  - [ ] Style stat bars with gradient fills and animations
-  - [ ] Enhance Pokemon cards with hover effects and better typography
-  - [ ] Style stat blocks with Pokemon-themed colors and consistent layout
-  - [x] Add loading skeletons for better perceived performance
-  - [x] Implement consistent focus indicators for accessibility
-  - [ ] Create error and success state styling for forms
-
-- [~] **Layout and Navigation Polish**
-  - [x] Enhance header with logo/branding and navigation menu
-  - [ ] Improve sidebar with collapsible sections and icons
-  - [ ] Add breadcrumb navigation for multi-level views
-  - [x] Implement consistent spacing system throughout the app
-  - [x] Create responsive grid layouts for Pokemon collections
-  - [x] Add scroll-to-top functionality for long lists
-
-- [x] **Accessibility and UX Improvements**
-  - [x] Ensure proper color contrast ratios for WCAG compliance
-  - [x] Add keyboard navigation support for all interactive elements
-  - [x] Implement screen reader friendly labels and descriptions
-  - [x] Add reduced motion preferences support
-  - [x] Create consistent loading states and error handling UI
-  - [x] Implement proper focus management for modals and forms
-
-- [~] **Performance and Polish**
-  - [ ] Optimize component re-renders with React.memo where needed
-  - [ ] Add CSS-in-JS or styled-components for dynamic theming
-  - [ ] Implement image lazy loading for Pokemon sprites
-  - [ ] Add smooth page transitions between different sections
-  - [x] Create consistent spacing and typography scale
-  - [ ] Set up Storybook for component documentation (optional)
+> Further design and polish tasks will be revisited after core functionality and API integration are complete.
 
 ### Phase 2: Pokemon Data Management (Weeks 3-4)
 
 #### 2.1 Data Infrastructure Setup
-- [ ] Implement Pokemon data source (API integration or local database)
-- [ ] Create basic stat conversion algorithms  
-- [ ] Design main application layout and navigation
-- [ ] Set up data caching and persistence layer
+- [x] 2.1.1 Integrate with PokeAPI (https://pokeapi.co/) for Pokemon data
+  - [x] 2.1.1.1 Design TypeScript interfaces for PokeAPI responses (see `src/types/pokemon.ts`)
+  - [x] 2.1.1.2 Implement Rust-side Tauri command to fetch data from PokeAPI (handles CORS)
+  - [x] 2.1.1.3 Expose Tauri command to frontend for requesting Pokemon data
+  - [x] 2.1.1.4 Add error handling and loading states for API requests
+
+> **✅ COMPLETE**: TypeScript interfaces for PokeAPI responses are defined in `src/types/pokemon.ts` and `src/types/index.ts`. Rust-side Tauri commands `fetch_pokemon` and `search_pokemon` are fully implemented in `src-tauri/src/commands.rs` with proper HTTP requests to PokeAPI, error handling, and data transformation from PokeAPI responses to internal Pokemon structures. Frontend service layer in `src/services/tauri.ts` properly exposes these commands, and UI components have comprehensive loading/error state handling.
+
+- [x] 2.1.2 Implement local caching and persistence layer
+  - [x] 2.1.2.1 Store fetched Pokemon data in SQLite via Rust backend
+  - [x] 2.1.2.2 Add logic to check cache before making API requests
+  - [x] 2.1.2.3 Provide cache invalidation/refresh mechanism
+
+> **✅ COMPLETE**: Comprehensive Pokemon caching system implemented with SQLite backend storage. All Pokemon data fetched from PokeAPI is automatically cached with 24-hour TTL. Implemented cache-first data loading strategy (Cache → Database → API fallback) with methods for `cache_pokemon()`, `get_cached_pokemon()`, `is_pokemon_cache_valid()`, cache clearing, and batch retrieval. Frontend service layer includes CacheStats interface and cache management commands (`clear_pokemon_cache`, `clear_expired_cache`, `get_cache_stats`, `get_pokemon_batch`) fully registered in Tauri. Build verification completed successfully.
+
+- [x] 2.1.3 Create Pokedex page with dynamic loading and intelligent caching
+  - [x] 2.1.3.1 Implement Pokemon pagination backend commands for efficient data loading
+  - [x] 2.1.3.2 Create Pokedex page component with infinite scroll and virtual scrolling
+  - [x] 2.1.3.3 Implement smart data loading strategy (cache → database → API fallback)
+  - [x] 2.1.3.4 Add Pokemon filtering and search functionality with real-time updates
+
+> **✅ COMPLETE (2.1.3.4)**: Search functionality fully restored and enhanced. Fixed infinite scroll interference with search results by properly disabling the IntersectionObserver when search is active. Search now returns all matching results instantly without pagination conflicts. Improved state management to reset pagination properly when switching between search and normal browsing modes. Added comprehensive logging for debugging and enhanced search performance.
+
+  - [x] 2.1.3.5 Optimize performance with skeleton loading states and intersection observer
+  - [x] 2.1.3.6 Add Pokemon detail modal/drawer for quick access without navigation
+
+> **✅ COMPLETE (2.1.3.6)**: Pokemon detail modal functionality implemented using Modal component. Click any Pokemon card to view detailed information in a modal overlay with additional action buttons (Add to Party, View D&D Stats, Export). Modal includes full Pokemon card display and proper focus management.
+
+> **🚧 IMPROVEMENT (Data Loading)**: Enhanced Pokemon data loading system to address missing Pokemon issue. Added bulk initialization commands (`initialize_pokemon_data`, `get_pokemon_list_improved`) to properly populate Pokemon cache from PokeAPI. Implemented user-friendly "Load Gen 1" button for manual data initialization. Improved error handling to guide users when Pokemon data is missing. Updated fallback logic to handle empty cache scenarios gracefully.
+
+> **✅ COMPLETE (2.1.3.2)**: Automatic infinite scroll loading implemented using IntersectionObserver with 100px root margin for early triggering. Replaced manual "load more" button with seamless automatic loading when user scrolls near bottom. Added separate loading states for initial load vs. infinite scroll loading with subtle loading indicators. Enhanced with console logging for debugging and optimized performance with proper state management.
+- [ ] 2.1.4 Create basic stat conversion algorithms (TypeScript utils)
+  - [ ] 2.1.4.1 Map PokeAPI base stats to D&D ability scores
+  - [ ] 2.1.4.2 Implement conversion utility functions
+- [~] 2.1.5 Design main application data flow and navigation
+  - [x] 2.1.5.1 Define how/when data is loaded (on search, on view, etc.)
+  - [x] 2.1.5.2 Update navigation to support data-driven views
+  - [ ] 2.1.5.3 Document data flow between frontend, backend, and cache
 
 #### 2.2 Core Functionality
-- [ ] Pokemon search and display functionality
-- [ ] Detailed Pokemon information views
-- [ ] Base stat to D&D ability score conversion
-- [ ] Type effectiveness to damage resistance/vulnerability mapping
-- [ ] Move translation to spells/abilities
+- [ ] 2.2.1 Pokemon search and display functionality
+- [ ] 2.2.2 Detailed Pokemon information views
+- [ ] 2.2.3 Base stat to D&D ability score conversion
+- [ ] 2.2.4 Type effectiveness to damage resistance/vulnerability mapping
+- [ ] 2.2.5 Move translation to spells/abilities
 
 ### Phase 3: Collection Management (Weeks 5-6)
-- [ ] User profile and party management
-- [ ] Pokemon capture/collection system
-- [ ] Save/load player data locally
-- [ ] Export Pokemon stat blocks to various formats (PDF, text, etc.)
-
-### Phase 4: Advanced Features (Weeks 7-8)
-- [ ] Custom stat conversion rules and modifiers
-- [ ] Level scaling for Pokemon stats
-- [ ] Integration with popular VTT platforms (Roll20, Foundry)
-- [ ] Advanced search and filtering options
-
-### Phase 5: Polish & Distribution (Weeks 9-10)
-- [ ] UI/UX improvements and theming
-- [ ] Performance optimization
-- [ ] Testing and bug fixes
-- [ ] Build distribution packages for Windows/Mac/Linux
+- [ ] 3.1 User profile and party management
+- [ ] 3.2 Pokemon capture/collection system
+- [ ] 3.3 Save/load player data locally
+- [ ] 3.4 Export Pokemon stat blocks to various formats (PDF, text, etc.)
 
 ## Technical Architecture
 
